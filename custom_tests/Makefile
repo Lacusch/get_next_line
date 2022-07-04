@@ -9,3 +9,11 @@ all :$(NAME)
 
 $(NAME): $(OBJECT)
 	gcc $(OBJECT) -o $(NAME)
+clean:
+	rm -f *.o
+	rm -f ../*.o
+fclean: clean
+	rm -f gnl_test
+re: fclean all
+norm:
+	norminette ../get_next_line.c ../get_next_line.h
