@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 14:55:13 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/07/07 16:22:44 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/07/07 16:28:40 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,28 @@
 # define BUFFER_SIZE 5
 #endif
 
-char	*ret_from_static_str(char* static_src)
+char	*ret_from_static_str(char *static_src)
 {
 	size_t	lenght;
-	char*	str_out;
+	char	*str_out;
+
 	if (static_src == NULL)
 		return (NULL);
 	lenght = get_lenght(static_src);
-	str_out = malloc(lenght *sizeof(char) + 1);
+	str_out = malloc(lenght * sizeof(char) + 1);
 	if (str_out == NULL)
 		return (NULL);
 	str_out = ft_substr(static_src, 1, lenght);
 	return (str_out);
 }
 
-int		char_pointer_test(char *str, char test)
+int	char_pointer_test(char *str, char test)
 {
 	if (!str)
-		return(0);
+		return (0);
 	while (*str != '\0')
 	{
-		if (*str ==(unsigned char)test)
+		if (*str == (unsigned char)test)
 			return (1);
 	}
 	return (0);
@@ -50,8 +51,7 @@ char	*read_line(int fd, char *str)
 	buff = malloc(BUFFER_SIZE * sizeof(char) + 1);
 	if (buff == NULL)
 		return (NULL);
-//Function to test it char* is equal to character c
-	while (char_pointer_test(str, '\n'!= 1))
+	while (char_pointer_test(str, '\n' != 1))
 	{
 		char_read = read(fd, buff, BUFFER_SIZE);
 		if (char_read == 0)
