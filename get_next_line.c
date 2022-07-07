@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 14:55:13 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/07/07 15:03:30 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/07/07 16:22:44 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,33 @@
 # define BUFFER_SIZE 5
 #endif
 
-char	read_line(int fd, char *str)
+char	*ret_from_static_str(char* static_src)
+{
+	size_t	lenght;
+	char*	str_out;
+	if (static_src == NULL)
+		return (NULL);
+	lenght = get_lenght(static_src);
+	str_out = malloc(lenght *sizeof(char) + 1);
+	if (str_out == NULL)
+		return (NULL);
+	str_out = ft_substr(static_src, 1, lenght);
+	return (str_out);
+}
+
+int		char_pointer_test(char *str, char test)
+{
+	if (!str)
+		return(0);
+	while (*str != '\0')
+	{
+		if (*str ==(unsigned char)test)
+			return (1);
+	}
+	return (0);
+}
+
+char	*read_line(int fd, char *str)
 {
 	char	*buff;
 	int		char_read;
@@ -24,10 +50,10 @@ char	read_line(int fd, char *str)
 	buff = malloc(BUFFER_SIZE * sizeof(char) + 1);
 	if (buff == NULL)
 		return (NULL);
-	//Function to transfor char* into unsigned char* for testing \n
-	while ((str) != '\n')
+//Function to test it char* is equal to character c
+	while (char_pointer_test(str, '\n'!= 1))
 	{
-		char_read = open(fd, buff, BUFFER_SIZE);
+		char_read = read(fd, buff, BUFFER_SIZE);
 		if (char_read == 0)
 			break ;
 		if (char_read == -1)
@@ -43,22 +69,22 @@ char	read_line(int fd, char *str)
 
 char	*get_next_line(int fd)
 {
-	static char		*chache;
+	static char		*static_str;
 	char			*ret;
 
-	chache = read_line(fd, chache);
+	static_str = read_line(fd, static_str);
 	if (BUFFER_SIZE <= 0 || fd < 0 || fd > OPEN_MAX)
 		return (NULL);
-	chache = read_line(fd, chache);
-	if (chache == NULL)
+	static_str = read_line(fd, static_str);
+	if (static_str == NULL)
 		return (NULL);
-	ret = ret_from_chache(chache);
+	ret = ret_from_static_str(static_str);
 	if (ret == NULL)
 		return (NULL);
-	if (chache == '\0')
+	if (static_str == '\0')
 	{
-		free (chache);
-		chache = NULL;
+		free (static_str);
+		static_str = NULL;
 	}		
 	return (ret);
 }

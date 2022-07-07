@@ -6,11 +6,11 @@
 /*   By: slaszlo- <slaszlo-@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 14:55:10 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/07/07 14:59:22 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/07/07 16:23:34 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "get_next_line.h"
 
 char	*ft_strjoin(char const	*s1, char const	*s2)
 
@@ -54,6 +54,23 @@ size_t	ft_strlen(const char *s)
 	return (c);
 }
 
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+{
+	size_t	i;
+
+	i = 0;
+	if (dstsize > 0)
+	{
+		while (i < dstsize - 1 && src[i] != '\0')
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
+	}
+	return (ft_strlen(src));
+}
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 {
@@ -71,3 +88,21 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	ft_strlcpy(new_str, &s[start], len + 1);
 	return (new_str);
 }
+
+size_t	get_lenght(const char *str)
+{
+	size_t lenght;
+
+	lenght = 0;
+	while (str != NULL ||str[lenght] != '\0')
+	{
+		if (str[lenght] == '\n')
+		{
+			lenght++;
+			break ;
+		} 
+		lenght++;
+	}
+	return (lenght);
+}
+
