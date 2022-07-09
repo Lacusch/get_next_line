@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 14:55:13 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/07/07 16:28:40 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/07/09 16:32:37 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,25 @@
 #ifndef BUFFER_SIZE
 # define BUFFER_SIZE 5
 #endif
+
+char	*move_str(char	*dest, char	*src, size_t	len)
+{
+	size_t	i;
+
+	i = 0;
+	if (dest == NULL & src == NULL)
+		return (NULL);
+	while (i < len)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	while (dest[i] != '\0')
+	{
+		dest[i++] = '\0';
+	}
+	return (dest);
+}
 
 char	*ret_from_static_str(char *static_src)
 {
@@ -27,7 +46,9 @@ char	*ret_from_static_str(char *static_src)
 	str_out = malloc(lenght * sizeof(char) + 1);
 	if (str_out == NULL)
 		return (NULL);
-	str_out = ft_substr(static_src, 1, lenght);
+	ft_memcpy(str_out, static_src, lenght);
+	str_out[lenght] = '\0';
+	move_str(static_src, &static_src[lenght], ft_strlen(&static_src[lenght]));
 	return (str_out);
 }
 

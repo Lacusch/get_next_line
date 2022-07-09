@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 14:55:10 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/07/07 16:27:05 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/07/09 16:32:59 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,22 +71,23 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	return (ft_strlen(src));
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	char	*new_str;
+	size_t			i;
+	unsigned char	*tempd;
+	unsigned char	*temps;
 
-	if (s == NULL)
+	i = 0;
+	tempd = (unsigned char *)dst;
+	temps = (unsigned char *)src;
+	if (dst == NULL && src == NULL)
 		return (NULL);
-	if (start >= ft_strlen(s))
-		len = 0;
-	else if (ft_strlen(s + start) < len)
-		len = ft_strlen(s + start);
-	new_str = malloc (sizeof(char) * (len + 1));
-	if (new_str == NULL)
-		return (NULL);
-	ft_strlcpy(new_str, &s[start], len + 1);
-	return (new_str);
+	while (i < n)
+	{
+	tempd[i] = temps[i];
+	i++;
+	}
+	return (dst);
 }
 
 size_t	get_lenght(const char *str)
