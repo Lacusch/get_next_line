@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 14:55:13 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/07/09 16:32:37 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/07/13 12:27:53 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,17 @@ char	*ret_from_static_str(char *static_src)
 	return (str_out);
 }
 
-int	char_pointer_test(char *str, char test)
+bool	char_pointer_test(const char *str, int test)
 {
 	if (!str)
 		return (0);
 	while (*str != '\0')
 	{
 		if (*str == (unsigned char)test)
-			return (1);
+			break ;
+		str++;
 	}
-	return (0);
+	return (*str == (unsigned char)test);
 }
 
 char	*read_line(int fd, char *str)
@@ -72,7 +73,7 @@ char	*read_line(int fd, char *str)
 	buff = malloc(BUFFER_SIZE * sizeof(char) + 1);
 	if (buff == NULL)
 		return (NULL);
-	while (char_pointer_test(str, '\n' != 1))
+	while (char_pointer_test(str, '\n'))
 	{
 		char_read = read(fd, buff, BUFFER_SIZE);
 		if (char_read == 0)
