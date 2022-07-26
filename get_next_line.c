@@ -6,21 +6,21 @@
 /*   By: slaszlo- <slaszlo-@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:39:41 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/07/23 01:01:01 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/07/26 14:44:01 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line.h"
 #ifndef BUFFER_SIZE
 # define BUFFER_SIZE 5
-# endif
-# include "get_next_line.h"
+#endif
 
 char	*get_next_line(int fd)
 {
 	static char		*stash;
 	char			*ret;
 
-	if (BUFFER_SIZE <= 0 || fd < 0 || fd > OPEN_MAX)
+	if (BUFFER_SIZE <= 0 || fd < 0)
 		return (NULL);
 	stash = read_than_stash(fd, stash);
 	if (stash == NULL)
@@ -32,25 +32,25 @@ char	*get_next_line(int fd)
 	{
 		free (stash);
 		stash = NULL;
-	}	
+	}
 	return (ret);
 }
 
-char	*read_than_stash(int fd, char* stash)
+char	*read_than_stash(int fd, char *stash)
 {
-	char*	buff;
+	char	*buff;
 	int		char_read;
 
 	buff = malloc(BUFFER_SIZE * sizeof(char) + 1);
 	if (buff == NULL)
-			return (NULL);		
+		return (NULL);
 	while (!ft_strchr_bool(stash, '\n'))
 	{
 		char_read = read(fd, buff, BUFFER_SIZE);
 		if (char_read == 0)
 			break ;
 		if (char_read == -1)
-			return(free(buff), NULL);
+			return (free(buff), NULL);
 		buff[char_read] = '\0';
 		stash = ft_strjoin (stash, buff);
 		if (stash == NULL)
@@ -68,7 +68,7 @@ char	*cut_from_static(char	*stash)
 	if (stash == NULL)
 		return (NULL);
 	lenght = get_lenght(stash);
-	str_out = malloc(lenght  * ((sizeof(char) + 1)));
+	str_out = malloc(lenght * ((sizeof(char) + 1)));
 	if (str_out == NULL)
 		return (NULL);
 	ft_memcpy(str_out, stash, lenght);
@@ -79,7 +79,7 @@ char	*cut_from_static(char	*stash)
 
 int	get_lenght(char *stash)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (stash != NULL && stash[len] != '\0')

@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:39:38 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/07/23 01:43:30 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/07/26 14:33:11 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@ int	ft_strchr_bool(const char *s, int c)
 	while (*s != '\0')
 	{
 		if (*s == (unsigned char)c)
-			break ;
+			return (1) ;
 		s++;
 	}
-	return (1);
+	return (0);
 }
-
 
 char	*move_str(char *dest, char *src, size_t len)
 {
