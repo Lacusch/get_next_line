@@ -6,19 +6,19 @@
 /*   By: slaszlo- <slaszlo-@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:39:38 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/07/26 14:33:11 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/07/27 14:28:59 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strchr_bool(const char *s, int c)
+int	has_str_nl(const char *s)
 {
 	if (!s)
 		return (0);
 	while (*s != '\0')
 	{
-		if (*s == (unsigned char)c)
+		if (*s == '\n')
 			return (1) ;
 		s++;
 	}

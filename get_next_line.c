@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:39:41 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/07/26 14:44:01 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/07/27 14:29:06 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*read_than_stash(int fd, char *stash)
 	buff = malloc(BUFFER_SIZE * sizeof(char) + 1);
 	if (buff == NULL)
 		return (NULL);
-	while (!ft_strchr_bool(stash, '\n'))
+	while (!has_str_nl(stash))
 	{
 		char_read = read(fd, buff, BUFFER_SIZE);
 		if (char_read == 0)
