@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:39:38 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/07/27 14:28:59 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/07/27 16:54:06 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	has_str_nl(const char *s)
 	while (*s != '\0')
 	{
 		if (*s == '\n')
-			return (1) ;
+			return (1);
 		s++;
 	}
 	return (0);

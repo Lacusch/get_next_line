@@ -6,21 +6,18 @@
 /*   By: slaszlo- <slaszlo-@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:39:41 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/07/27 14:29:06 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/07/27 16:53:25 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 5
-#endif
 
 char	*get_next_line(int fd)
 {
 	static char		*stash;
 	char			*ret;
 
-	if (BUFFER_SIZE <= 0 || fd < 0)
+	if (BUFFER_SIZE <= 0 || fd < 0 || fd > FD_SETSIZE)
 		return (NULL);
 	stash = read_than_stash(fd, stash);
 	if (stash == NULL)

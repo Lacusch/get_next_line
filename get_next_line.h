@@ -6,17 +6,18 @@
 /*   By: slaszlo- <slaszlo-@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:39:43 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/07/27 14:29:02 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/07/27 16:53:48 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 5
+# endif
 
-# include "unistd.h"
+# include <unistd.h>
 # include <stdlib.h>
-
-# include "limits.h"
 # include <fcntl.h>
 
 char	*get_next_line(int fd);

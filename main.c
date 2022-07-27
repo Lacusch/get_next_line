@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 07:57:36 by nikito            #+#    #+#             */
-/*   Updated: 2022/07/26 14:48:51 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/07/27 16:57:46 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,5 @@ int	main(void)
 		printf("%s\n", line);
 		free(line);
 	}
-	// line = get_next_line(fd);
-	// printf("lINE = %s\n", line);
 	return (0);
 }
