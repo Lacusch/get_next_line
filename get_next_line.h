@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:39:43 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/07/27 16:53:48 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/07/29 17:28:33 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <fcntl.h>
 
 char	*get_next_line(int fd);
 
