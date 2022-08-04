@@ -7,5 +7,5 @@ This project is the basis for some graphical projects and it teaches us how to u
 ```c
 int	get_next_line(int fd, char **line);
 ```
-This project uses the 'BUFFER_SIZE' macro, which you can change by giving the compiler the -D 'BUFFER_SIZE=xx' to set the amount of bytes to scan
+This project uses the BUFFER_SIZE macro, which you can change by giving the compiler the -D BUFFER_SIZE=xx to set the amount of bytes to scan
 with each loop.
